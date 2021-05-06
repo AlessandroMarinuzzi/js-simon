@@ -19,12 +19,24 @@ var userArray = [];
 var userNumber;
 // User must insert his numbers one by one trying to match the number contained in the randomArray appeared in the first alert. 
 // Let's set an interval for the countdown. Once the timer === 0 prompts can appear.
-var interval = setInterval(function(){
+var interval = setTimeout(function(){
     if (timer === 0){
         // We set the array length to restrain the number of prompts and we push them into their own array.
         while (userArray.length < 5){
             userNumber = Number(prompt("Inserisci uno dei numeri che hai visto"))
             userArray.push(userNumber)
+            
+            // After 5 numbers have been inserted, software must reveal which and how many numbers have been guessed.
+            var guessedNumbers = [];
+            for (var i = 0; i < 5; i ++){
+                var elem = userArray[i]
+                if(randomArray.includes(elem)){
+                    guessedNumbers.push(elem)
+                }
+            }
+            console.log(guessedNumbers);
+            alert("You guessed " + guessedNumbers.length + " numbers! And they are:" + guessedNumbers + "!")
+
             // We also verify the user can insert numbers only.
             if (isNaN(userNumber)){
                 alert("You must insert a number")
@@ -34,18 +46,18 @@ var interval = setInterval(function(){
     } else {
         timer--
     }
-} ,1000);
+} ,3000);
 
-// After 5 numbers have been inserted, software must reveal which and how many numbers have been guessed.
 
-var guessedNumbers = [];
-for (var i = 0; i < randomArray.length; i ++){
-    if(userArray[i] === randomArray[i]){
-        guessedNumbers.push(userArray[i])
-    }
-}
-console.log(guessedNumbers);
 
+
+
+// for (var i = 0; i < randomArray.length; i ++){
+//     if(userArray[i] === randomArray[i]){
+//         guessedNumbers.push(userArray[i])
+//     }
+// }
+// console.log(guessedNumbers);
 
 
 
