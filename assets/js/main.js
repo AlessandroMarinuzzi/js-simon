@@ -15,15 +15,29 @@ alert("Remember these numbers:" + randomArray);
 // Let's initialize a 30 seconds timer with a Var and an array to push the userNumbers into it.
 var timer = 5;
 var userArray = [];
-// User must insert his numbers one by one trying to match the number contained in the randomArray. 
-// Let's set an interval.
+// User must insert his numbers one by one trying to match the number contained in the randomArray appeared in the first alert. 
+// Let's set an interval for the countdown. Once the timer === 0 prompts can appear.
 var interval = setInterval(function(){
     if (timer === 0){
-        for (i = 0; i < 5; i++){
+        // We set the array length to restrain the number of prompts and we push them into their own array.
+        while (userArray.length < 5){
             userNumber = Number(prompt("Inserisci uno dei numeri che hai visto"))
+            userArray.push(userNumber)
+            // We also verify the user can insert numbers only.
+            if (isNaN(userNumber)){
+                alert("You must insert a number")
+                userArray.length--
+            }
         } 
     } else {
         timer--
     }
-} ,1000)
+} ,1000);
+
+// After 5 numbers have been inserted, software must reveal which and how many numbers have been guesses.
+
+
+
+
+
 
