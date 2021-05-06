@@ -14,50 +14,51 @@ console.log(randomArray);
 alert("Remember these numbers:" + randomArray);
 
 // Let's initialize a 30 seconds timer with a Var and an array to push the userNumbers into it.
-var timer = 5;
+var timer = 30;
 var userArray = [];
 var userNumber;
+var i = 0;
 // User must insert his numbers one by one trying to match the number contained in the randomArray appeared in the first alert. 
 // Let's set an interval for the countdown. Once the timer === 0 prompts can appear.
-var interval = setTimeout(function(){
+var interval = setInterval(function(){
     if (timer === 0){
         // We set the array length to restrain the number of prompts and we push them into their own array.
-        while (userArray.length < 5){
+        while (i < 5){
             userNumber = Number(prompt("Inserisci uno dei numeri che hai visto"))
-            userArray.push(userNumber)
-            
-            // After 5 numbers have been inserted, software must reveal which and how many numbers have been guessed.
-            var guessedNumbers = [];
-            for (var i = 0; i < 5; i ++){
-                var elem = userArray[i]
-                if(randomArray.includes(elem)){
-                    guessedNumbers.push(elem)
-                }
-            }
-            console.log(guessedNumbers);
-            alert("You guessed " + guessedNumbers.length + " numbers! And they are:" + guessedNumbers + "!")
-
-            // We also verify the user can insert numbers only.
             if (isNaN(userNumber)){
-                alert("You must insert a number")
-                userArray.length--
+                alert("Insert numbers only")
+                i--
             }
-        } 
+            if(randomArray.includes(userNumber)){
+                userArray.push(userNumber)
+            } 
+            i++
+            // After 5 numbers have been inserted, software must reveal which and how many numbers have been guessed.
+        } alert("You guessed " + userArray.length + "numbers! And they are:" + userArray) 
     } else {
         timer--
     }
-} ,3000);
+} ,1000);
+
+// We also verify the user can insert numbers only
 
 
 
-
-
+// ************************ Ask Fabio for arrays comparing ***************************
 // for (var i = 0; i < randomArray.length; i ++){
 //     if(userArray[i] === randomArray[i]){
-//         guessedNumbers.push(userArray[i])
+    //         guessedNumbers.push(userArray[i])
 //     }
 // }
 // console.log(guessedNumbers);
+// var guessedNumbers = [];
+// for (var i = 0; i < 5; i ++){
+//     var elem = userArray[i]
+//     if(randomArray.includes(elem)){
+//         guessedNumbers.push(elem)
+//     }
+// }
+// ****************************************************************************************
 
 
 
