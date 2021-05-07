@@ -14,14 +14,13 @@ console.log(randomArray);
 alert("Remember these numbers:" + randomArray);
 
 // Let's initialize a 30 seconds timer with a Var and an array to push the userNumbers into it.
-var timer = 30;
 var userArray = [];
 var userNumber;
 var i = 0;
 // User must insert his numbers one by one trying to match the number contained in the randomArray appeared in the first alert. 
 // Let's set an interval for the countdown. Once the timer === 0 prompts can appear.
-var interval = setInterval(function(){
-    if (timer === 0){
+setTimeout(function(){
+    
         // We set the array length to restrain the number of prompts and we push them into their own array.
         while (i < 5){
             userNumber = Number(prompt("Inserisci uno dei numeri che hai visto"))
@@ -34,11 +33,10 @@ var interval = setInterval(function(){
             } 
             i++
             // After 5 numbers have been inserted, software must reveal which and how many numbers have been guessed.
-        } alert("You guessed " + userArray.length + "numbers! And they are:" + userArray) 
-    } else {
-        timer--
-    }
-} ,1000);
+        } 
+        alert("You guessed " + userArray.length + "numbers! And they are:" + userArray) 
+  
+} ,30000);
 
 // We also verify the user can insert numbers only
 
